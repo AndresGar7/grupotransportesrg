@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const isMobileMenuOpen = ref(false);
 const menuItems = ref([
@@ -22,15 +22,29 @@ function toggleMobileMenu() {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 }
 
-// Asegurarse de que la imagen se muestre con un efecto cuando la página cargue
-window.onload = function() {
-    const heroSection = document.getElementById('hero-section');
-    if (heroSection) {
-        // Solo se ejecuta si el elemento existe en el DOM
-        heroSection.classList.remove('opacity-0');
-        heroSection.classList.add('opacity-100');
-    }
-};
+const animatedSections = ref<HTMLElement[]>([]);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        const el = entry.target as HTMLElement;
+        if (entry.isIntersecting) {
+          el.classList.add('animate-fade-up');
+          el.classList.remove('before-fade-up');
+        } else {
+          el.classList.remove('animate-fade-up');
+          el.classList.add('before-fade-up');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  animatedSections.value.forEach(section => {
+    observer.observe(section);
+  });
+});
 </script>
 
 
@@ -95,34 +109,34 @@ window.onload = function() {
                                 @mouseenter="hoverSubmenu(index, true)"
                                 @mouseleave="hoverSubmenu(index, false)"
                             >
-                            <button
-                                @click="toggleSubmenu(index)"
-                                class="flex items-center justify-center space-x-1 h-full px-4 py-2 text-left hover:text-yellow-500"
-                            >
-                                <span>{{ item.name }}</span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="w-5 h-5 transition-transform"
-                                    :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                    >
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
-                                        clip-rule="evenodd"
-                                    />
+                                <button
+                                    @click="toggleSubmenu(index)"
+                                    class="flex items-center justify-center space-x-1 h-full px-4 py-2 text-left hover:text-yellow-500"
+                                >
+                                    <span>{{ item.name }}</span>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="w-5 h-5 transition-transform"
+                                        :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                        >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
+                                            clip-rule="evenodd"
+                                        />
                                     </svg>
-                            </button>
-                            <!-- Submenú -->
-                            <ul
-                                v-if="item.showSubmenu"
-                                class="absolute left-0 top-full mt-1 bg-white dark:bg-[#1f1f1f] text-black dark:text-white shadow-lg rounded py-2 z-50 w-44"
-                            >
-                                <li v-for="(sub, i) in item.submenu" :key="i">
-                                    <a href="#" class="block px-4 py-2 hover:text-yellow-500">{{ sub }}</a>
-                                </li>
-                            </ul>
+                                </button>
+                                <!-- Submenú -->
+                                <ul
+                                    v-if="item.showSubmenu"
+                                    class="absolute left-0 top-full mt-1 bg-white dark:bg-[#1f1f1f] text-black dark:text-white shadow-lg rounded py-2 z-50 w-44"
+                                >
+                                    <li v-for="(sub, i) in item.submenu" :key="i">
+                                        <a href="#" class="block px-4 py-2 hover:text-yellow-500">{{ sub }}</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -198,24 +212,86 @@ window.onload = function() {
         </header>
 
         <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
-
+        <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+        <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+        
         <!-- Contenedor principal de la imagen y los mensajes -->
-        <div id="hero-section" class="relative w-full h-screen opacity-0 transition-opacity duration-[3000ms] ease-in-out bg-cover bg-center" style="background-image: url('/img/welcome.jpg'); background-size: contain; background-repeat: no-repeat;">            
-            <div class="absolute left-0 bottom-[15%] p-6 space-y-4 text-white z-10">
-                <p class="text-lg">¿Pensando en mudarte?</p>
-                <h2 class="text-6xl text-[#f0ba18] font-bold">Servicios de acarreos</h2>
-                <p class="text-lg">Local y nacional</p>
+        <div class="w-full max-w-10xl ease-in-out bg-white items-center justify-center">
+            <transition
+                    enter-active-class="transition-all duration-5000 ease-out"
+                    enter-from-class="opacity-0 -translate-y-12"
+                    enter-to-class="opacity-100 translate-y-0"
+                    appear
+                >
+                <img src="/img/welcome.jpg" alt="wleodsaf"  class="object-contain shadow-md items-center justify-center">
+            </transition>
+        </div>
 
-                <!-- Iconos de estrellas -->
-                <div class="flex space-x-1">
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
-                    <i class="fas fa-star text-yellow-400"></i>
+        <!-- Contenedor externo con sombra -->
+        <div class="w-full gap-0 md:gap-2 p-0 md:p-0  max-w-7xl  mx-auto shadow-2xl">
+
+            <!-- Contenedor interno -->
+            <div class="w-full bg-white h-full flex flex-col md:flex-row overflow-hidden pb-16">
+
+                <!-- División interna -->
+                <!-- Columna izquierda con texto vertical -->
+                <div class="w-full md:w-1/2 h-full flex items-center justify-center">
+                    <transition
+                        enter-active-class="transition-all duration-5000 ease-out"
+                        enter-from-class="opacity-0 -translate-y-12"
+                        enter-to-class="opacity-100 translate-y-0"
+                        appear
+                    >
+                        <div class="flex flex-col text-black text-center items-center justify-center ">
+                            <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+                            <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+                            <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+                            <p class="text-lg">¿Pensando en mudarte?</p>
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#f0ba18] font-bold">Servicios de mudanzas</h2>
+                            <p class="text-lg">Local y nacional</p>
+
+                            <!-- Iconos de estrellas -->
+                            <div class="flex space-x-1 mt-2 mb-4">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+
+
+                <!-- Columna derecha normal -->
+                <div class="w-full md:w-1/2 md:h-full flex flex-col p-4">
+                    <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+                    <transition
+                        enter-active-class="transition-all duration-5000 ease-out"
+                        enter-from-class="opacity-0 -translate-y-12"
+                        enter-to-class="opacity-100 translate-y-0"
+                        appear
+                    >
+                        <img src="/img/welcome2.jpg" alt="Descripción" class=" object-contain rounded-lg shadow-md" />
+                    </transition>
                 </div>
             </div>
+        
+            <div class="w-full bg-slate-200 h-full flex flex-col md:flex-row overflow-hidden">
+                <div class="w-full h-20 flex items-center justify-center">
+                    <h1 class="text-5xl font-bold">Servicios</h1>
+                </div>
+
+                <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+                <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+                <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+            </div>
         </div>
-         
+
+        <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+        <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+        <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+
+
     </div>
 </template>
