@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import Navbar from '@/Components/Navbar.vue';
-import Footer from '@/Components/Footer.vue';
+import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue';
 import ScrollTop from '@/components/ScrollTop.vue';
-import WhatsAppButton from '@/Components/WhatsAppButton.vue';
+import WhatsAppButton from '@/components/WhatsAppButton.vue';
 import Start from '@/components/Start.vue';
 
 </script>
