@@ -8,12 +8,12 @@ import Start from '@/components/Start.vue'
 </script>
 
 <template>
-  <Head title="Bienvenido" />
+  <Head title="Bienvenido" /> 
   <div class="flex min-h-screen flex-col items-center bg-[#FDFDFC] text-[#1b1b18] dark:bg-[url('/img/diamond-sunset.svg')] lg:justify-center">
     <Navbar />
     <Start />
   </div>
-  <Footer />
+  <Footer /> 
   <WhatsAppButton />
   <ScrollTop />
 </template>
