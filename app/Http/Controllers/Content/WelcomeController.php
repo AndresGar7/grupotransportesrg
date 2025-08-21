@@ -24,7 +24,7 @@ class WelcomeController extends Controller
                 'submenu' => ['Email', 'Teléfono'],
             ],
         ];
-
+      
         return Inertia::render('Welcome', [
             'menuItems' => $menuItems,
         ]);
