@@ -83,54 +83,57 @@ function toggleMobileMenu() {
         <!-- Menú Escritorio -->
         <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center h-full text-white">
           <ul class="flex space-x-8 text-lg font-semibold">
-            <li>
-              <a href="/" class="flex items-center justify-center h-full px-4 py-2 hover:text-yellow-500">Inicio</a>
-            </li>
             <li v-for="(item, index) in menuItems" :key="index" class="relative">
-              <div
-                class="relative"
-                @mouseenter="hoverSubmenu(index, true)"
-                @mouseleave="hoverSubmenu(index, false)"
-              >
-                <button
-                  @click="toggleSubmenu(index)"
-                  class="flex items-center justify-center space-x-1 h-full px-4 py-2 text-left hover:text-yellow-500"
-                >
-                  <span>{{ item.name }}</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 h-5 transition-transform"
-                    :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+              <template v-if="item.submenu && item.submenu.length">
+                <!-- Item con submenu -->
+                <div class="relative flex items-center h-full"
+                     @mouseenter="hoverSubmenu(index, true)"
+                     @mouseleave="hoverSubmenu(index, false)">
+                  <button
+                    @click="toggleSubmenu(index)"
+                    class="flex items-center h-full justify-center space-x-1 px-4 py-2 text-left hover:text-yellow-500"
                   >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </button>
+                    <span>{{ item.name }}</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-5 h-5 transition-transform"
+                      :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
 
-                <!-- Submenú con animación -->
-                <transition
-                  enter-active-class="transition ease-out duration-300"
-                  enter-from-class="opacity-0 transform -translate-y-2"
-                  enter-to-class="opacity-100 transform translate-y-0"
-                  leave-active-class="transition ease-in duration-200"
-                  leave-from-class="opacity-100 transform translate-y-0"
-                  leave-to-class="opacity-0 transform -translate-y-2"
-                >
-                  <ul
-                    v-if="item.showSubmenu"
-                    class="absolute left-0 top-full mt-1 bg-white dark:bg-[#1f1f1f] text-black dark:text-white shadow-lg rounded py-2 z-50 w-44"
+                  <!-- Submenú -->
+                  <transition
+                    enter-active-class="transition ease-out duration-300"
+                    enter-from-class="opacity-0 transform -translate-y-2"
+                    enter-to-class="opacity-100 transform translate-y-0"
+                    leave-active-class="transition ease-in duration-200"
+                    leave-from-class="opacity-100 transform translate-y-0"
+                    leave-to-class="opacity-0 transform -translate-y-2"
                   >
-                    <li v-for="(sub, i) in item.submenu" :key="i">
-                      <a href="#" class="block px-4 py-2 hover:text-yellow-500">{{ sub }}</a>
-                    </li>
-                  </ul>
-                </transition>
-              </div>
+                    <ul
+                      v-if="item.showSubmenu"
+                      class="absolute left-0 top-full mt-1 bg-white dark:bg-[#1f1f1f] text-black dark:text-white shadow-lg rounded py-2 z-50 w-44"
+                    >
+                      <li v-for="(sub, i) in item.submenu" :key="i">
+                        <a href="#" class="block px-4 py-2 hover:text-yellow-500">{{ sub }}</a>
+                      </li>
+                    </ul>
+                  </transition>
+                </div>
+              </template>
+
+              <template v-else>
+                <!-- Item sin submenu -->
+                <a href="/" class="flex items-center h-full px-4 py-2 hover:text-yellow-500">{{ item.name }}</a>
+              </template>
             </li>
           </ul>
         </div>
@@ -155,34 +158,36 @@ function toggleMobileMenu() {
       <!-- Menú móvil -->
       <div v-if="isMobileMenuOpen" class="md:hidden px-4 pb-4">
         <ul class="flex flex-col space-y-2 text-lg font-semibold text-black dark:text-white">
-          <li>
-            <a href="/" class="block px-4 py-2 hover:text-yellow-500">Inicio</a>
-          </li>
           <li v-for="(item, index) in menuItems" :key="index" class="relative">
-            <button
-              @click="toggleSubmenu(index)"
-              class="w-full flex justify-between items-center px-4 py-2 hover:text-yellow-500"
-            >
-              <span>{{ item.name }}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5 transition-transform"
-                :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
-                fill="currentColor"
-                viewBox="0 0 20 20"
+            <template v-if="item.submenu && item.submenu.length">
+              <button
+                @click="toggleSubmenu(index)"
+                class="w-full flex justify-between items-center px-4 py-2 hover:text-yellow-500"
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
-            <ul v-if="item.showSubmenu" class="pl-8 mt-1 space-y-1">
-              <li v-for="(sub, i) in item.submenu" :key="i">
-                <a href="#" class="block px-2 py-1 hover:text-yellow-500">{{ sub }}</a>
-              </li>
-            </ul>
+                <span>{{ item.name }}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 transition-transform"
+                  :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <ul v-if="item.showSubmenu" class="pl-8 mt-1 space-y-1">
+                <li v-for="(sub, i) in item.submenu" :key="i">
+                  <a href="#" class="block px-2 py-1 hover:text-yellow-500">{{ sub }}</a>
+                </li>
+              </ul>
+            </template>
+            <template v-else>
+              <a href="/" class="block px-4 py-2 hover:text-yellow-500">{{ item.name }}</a>
+            </template>
           </li>
           <li>
             <a

@@ -12,6 +12,10 @@ class WelcomeController extends Controller
     {
         $menuItems = [
             [
+                'name' => 'Inicio',
+                'submenu' => [],
+            ],
+            [
                 'name' => 'Servicios',
                 'submenu' => ['Ejemplo 1', 'Ejemplo 2', 'Ejemplo 3'],
             ],
