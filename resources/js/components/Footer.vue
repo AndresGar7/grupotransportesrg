@@ -21,10 +21,10 @@
             <div>
             <h4 class="text-xl font-semibold mb-4 hover:text-yellow-400 transition-colors">Navegación</h4>
             <ul class="space-y-2">
-                <li><a href="/" class="text-gray-300 font-semibold underline hover:text-yellow-400 transition">Inicio</a></li>
-                <li><a href="/servicios" class="text-gray-300 hover:text-yellow-400 transition">Servicios</a></li>
-                <li><a href="/nosotros" class="text-gray-300 hover:text-yellow-400 transition">Nosotros</a></li>
-                <li><a href="/contacto" class="text-gray-300 hover:text-yellow-400 transition">Contacto</a></li>
+                <li><a href="/" class="text-gray-300 font-semibold hover:underline hover:text-yellow-400 transition">Inicio</a></li>
+                <li><a href="/servicios" class="text-gray-300 hover:underline hover:text-yellow-400 transition">Servicios</a></li>
+                <li><a href="/nosotros" class="text-gray-300 hover:underline hover:text-yellow-400 transition">Nosotros</a></li>
+                <li><a href="/contacto" class="text-gray-300 hover:underline hover:text-yellow-400 transition">Contacto</a></li>
             </ul>
             </div>
 
@@ -32,10 +32,10 @@
             <div>
             <h4 class="text-xl font-semibold mb-4 hover:text-yellow-400 transition-colors">Páginas de interés</h4>
             <ul class="space-y-2">
-                <li><a href="/politicas" class="text-gray-300 hover:text-yellow-400 transition">Política de privacidad</a></li>
-                <li><a href="/terminos" class="text-gray-300 hover:text-yellow-400 transition">Términos y condiciones</a></li>
-                <li><a href="/preguntas" class="text-gray-300 hover:text-yellow-400 transition">Preguntas frecuentes</a></li>
-                <li><a href="/blog" class="text-gray-300 hover:text-yellow-400 transition">Blog</a></li>
+                <li><a href="/politicas" class="text-gray-300 hover:underline hover:text-yellow-400 transition">Política de privacidad</a></li>
+                <li><a href="/terminos" class="text-gray-300 hover:underline hover:text-yellow-400 transition">Términos y condiciones</a></li>
+                <li><a href="/preguntas" class="text-gray-300 hover:underline hover:text-yellow-400 transition">Preguntas frecuentes</a></li>
+                <li><a href="/blog" class="text-gray-300 hover hover:underline:text-yellow-400 transition">Blog</a></li>
             </ul>
             </div>
 

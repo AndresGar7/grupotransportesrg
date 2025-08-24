@@ -23,23 +23,24 @@
         <div class="w-full gap-0 md:gap-2 p-0 md:p-0  max-w-7xl  mx-auto shadow-2xl">
 
             <!-- Contenedor interno -->
-            <div class="w-full bg-white h-full flex flex-col md:flex-row overflow-hidden pb-16">
+            <div class="w-full h-full flex flex-col md:flex-row overflow-hidden relative bg-contain bg-center bg-no-repeat" style="background-image: url('/img/colombia.jpg');" >
+                <!-- ✅ Capa de opacidad -->
+                <div class="absolute inset-0 bg-white opacity-80"></div>
 
-                <!-- División interna -->
                 <!-- Columna izquierda con texto vertical -->
-                <div class="w-full md:w-1/2 h-full flex items-center justify-center">
+                <div class="relative w-full md:w-1/2 h-full flex items-center justify-center"> <!-- ✅ relative para que quede encima del overlay -->
                     <transition
                         enter-active-class="transition-all duration-5000 ease-out"
                         enter-from-class="opacity-0 -translate-y-12"
                         enter-to-class="opacity-100 translate-y-0"
                         appear
                     >
-                        <div class="flex flex-col text-black text-center items-center justify-center ">
-                            <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
-                            <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
-                            <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+                        <div class="flex flex-col text-black text-center items-center justify-center "> <!-- ✅ text-white para mejor contraste -->
+                            <div class="h-6 sm:h-12 md:h-[72px] lg:h-[168px]"></div>
                             <p class="text-lg">¿Pensando en mudarte?</p>
-                            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#f0ba18] font-bold">Servicios de mudanzas</h2>
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#f0ba18] font-bold">
+                                Servicios de mudanzas
+                            </h2>
                             <p class="text-lg">Local y nacional</p>
 
                             <!-- Iconos de estrellas -->
@@ -54,9 +55,8 @@
                     </transition>
                 </div>
 
-
                 <!-- Columna derecha normal -->
-                <div class="w-full md:w-1/2 md:h-full flex flex-col p-4">
+                <div class="relative w-full md:w-1/2 md:h-full flex flex-col p-4"> <!-- ✅ relative aquí también -->
                     <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
                     <transition
                         enter-active-class="transition-all duration-5000 ease-out"
@@ -64,10 +64,11 @@
                         enter-to-class="opacity-100 translate-y-0"
                         appear
                     >
-                        <img src="/img/welcome2.jpg" alt="Descripción" class=" object-contain rounded-lg shadow-md" />
+                        <img src="/img/welcome2.jpg" alt="Descripción" class="object-contain rounded-lg shadow-md" />
                     </transition>
                 </div>
             </div>
+
         
             <!-- Sección Servicios -->
             <div class="w-full bg-slate-200 py-12">
