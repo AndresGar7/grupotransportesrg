@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Content\WelcomeController;
+use App\Http\Controllers\Content\FrontendController;
 use Inertia\Inertia;
 
-Route::get('/', [WelcomeController::class, 'index'])->name('home');
+Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/servicios', [FrontendController::class, 'service'])->name('service');
 
 Route::get('admin', function () {
     return Inertia::render('Admin');

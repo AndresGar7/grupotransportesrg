@@ -1,5 +1,12 @@
-<template>
-    <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
+  <script setup lang="ts">
+  import { Head } from '@inertiajs/vue3'
+  import MainLayout from '../MainLayout.vue'
+  </script>
+
+  <template>
+    <MainLayout>
+      <Head title="Bienvenido" /> 
+       <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
         <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
         <div class="h-2 sm:h-4 md:h-6 lg:h-5"></div>
         
@@ -230,4 +237,5 @@
                 
             </div>
         </div>
-</template>
+    </MainLayout>
+  </template>

@@ -1,26 +1,30 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { usePage } from '@inertiajs/vue3';
+import { usePage, Link } from '@inertiajs/vue3';
 
-interface MenuItem {
-  name: string;
-  submenu: string[];
-  showSubmenu?: boolean;
-  isHovered?: boolean;
+interface SubmenuItem {
+  name: string
+  url: string
 }
 
-const page = usePage();
+interface MenuItem {
+  name: string
+  url: string
+  submenu: SubmenuItem[]
+  showSubmenu?: boolean
+  isHovered?: boolean
+}
 
+// Obtener menú global compartido por Inertia (AppServiceProvider)
+const page = usePage();
 const menuItems = ref<MenuItem[]>([]);
 
 if (Array.isArray(page.props.menuItems)) {
   menuItems.value = (page.props.menuItems as MenuItem[]).map(item => ({
     ...item,
     showSubmenu: false,
-    isHovered: false,
+    isHovered: false
   }));
-} else {
-  console.warn('No existe menuItems en props o no es un array:', page.props.menuItems);
 }
 
 const isMobileMenuOpen = ref(false);
@@ -71,41 +75,40 @@ function toggleMobileMenu() {
         </div>
       </div>
     </div>
-
-    <!-- Navbar -->
+    
     <nav class="bg-white dark:bg-[#2a2a2a] shadow-md relative">
-      <div class="max-w-7xl mx-auto px-8 md:px-10 py-8 flex items-center justify-between h-22 relative">
+      <div class="max-w-7xl mx-auto px-8 md:px-10 py-4 flex items-center justify-between h-22 relative">
+
         <!-- Logo -->
-        <a href="/" class="block w-16 h-16 md:w-20 md:h-20">
+        <Link href="/" class="block w-16 h-16 md:w-20 md:h-20">
           <img src="/img/logo.svg" alt="Logo" class="w-full h-full object-contain" />
-        </a>
+        </Link>
 
         <!-- Menú Escritorio -->
         <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center h-full text-white">
           <ul class="flex space-x-8 text-lg font-semibold">
             <li v-for="(item, index) in menuItems" :key="index" class="relative">
               <template v-if="item.submenu && item.submenu.length">
-                <!-- Item con submenu -->
                 <div class="relative flex items-center h-full"
                      @mouseenter="hoverSubmenu(index, true)"
                      @mouseleave="hoverSubmenu(index, false)">
-                  <button
-                    @click="toggleSubmenu(index)"
-                    class="flex items-center h-full justify-center space-x-1 px-4 py-2 text-left hover:text-yellow-500"
-                  >
+                  
+                  <!-- Enlace principal -->
+                  <Link :href="item.url"
+                        class="flex items-center h-full justify-center space-x-1 px-4 py-2 text-left hover:text-yellow-500">
                     <span>{{ item.name }}</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-5 h-5 transition-transform"
-                      :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
-                        clip-rule="evenodd"
-                      />
+                  </Link>
+
+                  <!-- Botón desplegable -->
+                  <button @click="toggleSubmenu(index)"
+                          class="flex items-center h-full justify-center px-1 ml-1 hover:text-yellow-500">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="w-5 h-5 transition-transform"
+                         :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
+                         fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
+                            clip-rule="evenodd"/>
                     </svg>
                   </button>
 
@@ -118,12 +121,10 @@ function toggleMobileMenu() {
                     leave-from-class="opacity-100 transform translate-y-0"
                     leave-to-class="opacity-0 transform -translate-y-2"
                   >
-                    <ul
-                      v-if="item.showSubmenu"
-                      class="absolute left-0 top-full mt-1 bg-white dark:bg-[#1f1f1f] text-black dark:text-white shadow-lg rounded py-2 z-50 w-44"
-                    >
+                    <ul v-if="item.showSubmenu"
+                        class="absolute left-0 top-full mt-1 bg-white dark:bg-[#1f1f1f] text-black dark:text-white shadow-lg rounded py-2 z-50 w-44">
                       <li v-for="(sub, i) in item.submenu" :key="i">
-                        <a href="#" class="block px-4 py-2 hover:text-yellow-500">{{ sub }}</a>
+                        <Link :href="sub.url" class="block px-4 py-2 hover:text-yellow-500">{{ sub.name }}</Link>
                       </li>
                     </ul>
                   </transition>
@@ -131,8 +132,8 @@ function toggleMobileMenu() {
               </template>
 
               <template v-else>
-                <!-- Item sin submenu -->
-                <a href="/" class="flex items-center h-full px-4 py-2 hover:text-yellow-500">{{ item.name }}</a>
+                <!-- Item sin submenú -->
+                <Link :href="item.url" class="flex items-center h-full px-4 py-2 hover:text-yellow-500">{{ item.name }}</Link>
               </template>
             </li>
           </ul>
@@ -140,17 +141,16 @@ function toggleMobileMenu() {
 
         <!-- Botón Cotizar -->
         <div class="hidden md:flex ml-auto">
-          <a
-            href="https://wa.me/54604168308"
-            target="_blank"
-            class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded transition block text-center"
-          >
+          <a href="https://wa.me/54604168308"
+             target="_blank"
+             class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded transition block text-center">
             ¡Cotiza ahora!
           </a>
         </div>
 
         <!-- Botón móvil -->
-        <button @click="toggleMobileMenu" class="md:hidden text-black dark:text-white text-3xl focus:outline-none ml-4">
+        <button @click="toggleMobileMenu"
+                class="md:hidden text-black dark:text-white text-3xl focus:outline-none ml-4">
           <i :class="isMobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
         </button>
       </div>
@@ -160,41 +160,32 @@ function toggleMobileMenu() {
         <ul class="flex flex-col space-y-2 text-lg font-semibold text-black dark:text-white">
           <li v-for="(item, index) in menuItems" :key="index" class="relative">
             <template v-if="item.submenu && item.submenu.length">
-              <button
-                @click="toggleSubmenu(index)"
-                class="w-full flex justify-between items-center px-4 py-2 hover:text-yellow-500"
-              >
-                <span>{{ item.name }}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 transition-transform"
-                  :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
-                    clip-rule="evenodd"
-                  />
+              <Link :href="item.url" class="block px-4 py-2 hover:text-yellow-500">{{ item.name }}</Link>
+              <button @click="toggleSubmenu(index)"
+                      class="w-full flex justify-end px-4 py-2 hover:text-yellow-500">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-5 h-5 transition-transform"
+                     :class="item.showSubmenu ? 'rotate-180 text-yellow-500' : ''"
+                     fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.172l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"/>
                 </svg>
               </button>
               <ul v-if="item.showSubmenu" class="pl-8 mt-1 space-y-1">
                 <li v-for="(sub, i) in item.submenu" :key="i">
-                  <a href="#" class="block px-2 py-1 hover:text-yellow-500">{{ sub }}</a>
+                  <Link :href="sub.url" class="block px-2 py-1 hover:text-yellow-500">{{ sub.name }}</Link>
                 </li>
               </ul>
             </template>
             <template v-else>
-              <a href="/" class="block px-4 py-2 hover:text-yellow-500">{{ item.name }}</a>
+              <Link :href="item.url" class="block px-4 py-2 hover:text-yellow-500">{{ item.name }}</Link>
             </template>
           </li>
           <li>
-            <a
-              href="https://wa.me/54604168308"
-              target="_blank"
-              class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded transition block text-center"
-            >
+            <a href="https://wa.me/54604168308"
+               target="_blank"
+               class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded transition block text-center">
               ¡Cotiza ahora!
             </a>
           </li>
