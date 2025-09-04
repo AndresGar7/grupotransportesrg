@@ -6,10 +6,7 @@
   <template>
     <MainLayout>
       <Head title="Bienvenido" /> 
-       <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
-        <div class="h-2 sm:h-4 md:h-6 lg:h-14"></div>
-        <div class="h-2 sm:h-4 md:h-6 lg:h-5"></div>
-        
+
         <!-- Contenedor principal de la imagen y los mensajes -->
         <div class="w-full ease-in-out  items-center justify-center">
             <transition
@@ -42,12 +39,12 @@
                         appear
                     >
                         <div class="flex flex-col text-black text-center items-center justify-center "> <!-- text-white para mejor contraste -->
-                            <div class="h-6 sm:h-12 md:h-[72px] lg:h-[168px]"></div>
+                            <div class="h-6 sm:h-12 md:h-[72px] lg:h-[70px]"></div>
                             <p class="text-lg">¿Pensando en mudarte?</p>
-                            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#f0ba18] font-bold">
+                            <h2 class="text-3xl pt-4 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#f0ba18] font-bold">
                                 Servicios de mudanzas
                             </h2>
-                            <p class="text-lg">Local y nacional</p>
+                            <p class="text-lg pt-4">Local y nacional</p>
 
                             <!-- Iconos de estrellas -->
                             <div class="flex space-x-1 mt-2 mb-4">
@@ -56,6 +53,13 @@
                                 <i class="fas fa-star text-yellow-400"></i>
                                 <i class="fas fa-star text-yellow-400"></i>
                                 <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <!-- Botón grande -->
+                            <div class="w-full flex justify-center mt-6">
+                                <a href="https://wa.me/54604168308" target="_blank" 
+                                    class="mt-4 bg-yellow-500 hover:bg-yellow-600 text-white font-bold text-2xl px-20 py-4 rounded-lg shadow-lg transition transform hover:scale-105">
+                                    ¡Cotiza Ahora!
+                                </a>
                             </div>
                         </div>
                     </transition>
@@ -139,7 +143,7 @@
                     </div>
 
                 </div>
-        </div>
+            </div>
 
             <!-- Sección ¿Por qué elegirnos? -->
             <div class="w-full bg-white py-16 px-4">
