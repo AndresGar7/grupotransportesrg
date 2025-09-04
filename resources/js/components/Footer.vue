@@ -43,16 +43,16 @@
             <div>
             <h4 class="text-xl font-semibold mb-4 hover:text-yellow-400 transition-colors">Contáctanos</h4>
             <p class="text-gray-300 mb-2 hover:text-white transition-colors">
-                <strong>Sede Principal:</strong> Bucaramanga
+                <strong>Sede Principal:</strong> La Virginia / Risaralda
             </p>
             <p class="text-gray-300 mb-2 hover:text-white transition-colors">
-                <strong>Teléfono:</strong> 300 912 5896
+                <strong>Teléfono:</strong>  320 779 7441
             </p>
             <p class="text-gray-300 mb-2 hover:text-white transition-colors">
-                <strong>Dirección:</strong> Carrera 14 # 70-104
+                <strong>Dirección:</strong> Calle 16A #4A - 05 
             </p>
             <p class="text-gray-300 hover:text-white transition-colors">
-                <strong>Ubicación:</strong> Km 7 vía Girón
+                <strong>Ubicación:</strong><a href="https://maps.app.goo.gl/Bqxv3ireyjHzqE8JA" target="_blank" rel="noopener noreferrer"> Abrir Ubicación</a>
             </p>
             </div>
 

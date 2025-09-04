@@ -18,7 +18,8 @@
                 <img
                     src="/img/welcome.jpg"
                     alt="Bienvenida"
-                    class="w-full h-auto max-w-7xl mx-auto object-contain shadow-md mt-25 sm:mt-0"                />
+                    class="w-full h-auto max-w-7xl mx-auto object-contain shadow-md sm:mt-0"
+                />
             </transition>
         </div>
 
@@ -26,7 +27,7 @@
         <div class="w-full gap-0 md:gap-2 p-0 md:p-0  max-w-7xl  mx-auto shadow-2xl">
 
             <!-- Contenedor interno -->
-            <div class="w-full h-full flex flex-col md:flex-row overflow-hidden relative md:bg-contain md:bg-center md:bg-no-repeat" style="background-image: url('/img/colombia.jpg');">
+            <div class="w-full h-full flex flex-col md:flex-row overflow-hidden relative bg-[url('/img/colombia2.jpg')] md:bg-[url('/img/colombia.jpg')] bg-cover md:bg-contain md:bg-center md:bg-no-repeat">
                 <!-- Capa de opacidad -->
                 <div class="absolute inset-0 bg-white opacity-80"></div>
 

@@ -30,8 +30,8 @@
                       <i class="fas fa-star text-yellow-400 text-2xl"></i>
                       <i class="fas fa-star text-yellow-400 text-2xl"></i>
                       <i class="fas fa-star text-yellow-400 text-2xl"></i>
-                      <i class="fas fa-star text-yellow-400 text-2x"></i>
-                      <i class="fas fa-star text-yellow-400 text-2x"></i>
+                      <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                      <i class="fas fa-star text-yellow-400 text-2xl"></i>
                     </div>
 
                     <!-- Título -->

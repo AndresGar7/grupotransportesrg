@@ -51,10 +51,10 @@ function toggleMobileMenu() {
         <!-- Contacto -->
         <div class="flex space-x-1 hidden sm:block">
           <span class="text-gray-700 space-x-2 text-xl">
-            <a href="mailto:example@example.com" class="text-black font-bold">
+            <a href="mailto:grupotransporterg@gmail.com" class="text-black font-bold">
               <i class="fa-solid fa-envelope"></i>
             </a>
-            <a href="mailto:example@example.com" class="text-black font-bold">example@example.com</a>
+            <a href="mailto:grupotransporterg@gmail.com" class="text-black font-bold">grupotransporterg@gmail.com</a>
           </span>
         </div>
         <div class="border-l-2 h-6"></div>
@@ -63,15 +63,15 @@ function toggleMobileMenu() {
             <a href="tel:+1234567890" class="text-black font-bold">
               <i class="fa-solid fa-phone-volume"></i>
             </a>
-            <a href="tel:+1234567890" class="text-black font-bold">(+57) 567-890</a>
+            <a href="https://wa.me/573207797441" class="text-black font-bold">(+57) 320 - 7797441</a>
           </span>
         </div>
         <div class="border-l-2 h-6 mx-2"></div>
         <!-- Redes sociales -->
         <div class="flex space-x-4 hidden sm:block">
-          <a href="#" class="text-gray-700 hover:text-neutral-950 text-3xl"><i class="fa-brands fa-square-facebook"></i></a>
-          <a href="#" class="text-gray-700 hover:text-neutral-950 text-3xl"><i class="fa-brands fa-square-twitter"></i></a>
-          <a href="#" class="text-gray-700 hover:text-neutral-950 text-3xl"><i class="fa-brands fa-square-instagram"></i></a>
+          <a href="https://www.facebook.com/grupotransporterg" target="_blank" class="text-gray-700 hover:text-neutral-950 text-3xl"><i class="fa-brands fa-square-facebook"></i></a>
+          <a href="https://www.instagram.com/grupotransporterg?igsh=MWl0NThubzc1ZWxkdQ==" target="_blank" class="text-gray-700 hover:text-neutral-950 text-3xl"><i class="fa-brands fa-square-instagram"></i></a>
+          <a href="mailto:grupotransporterg@gmail.com" class="text-gray-700 hover:text-neutral-950 text-3xl"><i class="fa-solid fa-envelope"></i></a>
         </div>
       </div>
     </div>
