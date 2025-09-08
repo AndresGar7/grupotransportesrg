@@ -1,6 +1,6 @@
 <template>
   <a
-    href="https://wa.me/573207797441"
+    href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información."
     target="_blank"
     class="whatsapp-button"
     title="Chatear por WhatsApp"

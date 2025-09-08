@@ -57,7 +57,7 @@
                             </div>
                             <!-- Botón grande -->
                             <div class="w-full flex justify-center mt-6">
-                                <a href="https://wa.me/54604168308" target="_blank" 
+                                <a href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información." target="_blank" 
                                     class="mt-4 bg-yellow-500 hover:bg-yellow-600 text-white font-bold text-2xl px-20 py-4 rounded-lg shadow-lg transition transform hover:scale-105">
                                     ¡Cotiza Ahora!
                                 </a>

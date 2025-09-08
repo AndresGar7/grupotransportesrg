@@ -63,7 +63,7 @@ function toggleMobileMenu() {
             <a href="tel:+1234567890" class="text-black font-bold">
               <i class="fa-solid fa-phone-volume"></i>
             </a>
-            <a href="https://wa.me/573207797441" class="text-black font-bold">(+57) 320 - 7797441</a>
+            <a href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información." class="text-black font-bold">(+57) 320 - 7797441</a>
           </span>
         </div>
         <div class="border-l-2 h-6 mx-2"></div>
@@ -141,7 +141,7 @@ function toggleMobileMenu() {
 
         <!-- Botón Cotizar -->
         <div class="hidden md:flex ml-auto">
-          <a href="https://wa.me/54604168308"
+          <a href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información."
              target="_blank"
              class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded transition block text-center">
             ¡Cotiza ahora!
@@ -183,7 +183,7 @@ function toggleMobileMenu() {
             </template>
           </li>
           <li>
-            <a href="https://wa.me/54604168308"
+            <a href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información."
                target="_blank"
                class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded transition block text-center">
               ¡Cotiza ahora!

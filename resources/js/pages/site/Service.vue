@@ -50,7 +50,7 @@
                     <p class="text-2xl font-medium">Local y nacional.</p>
                     <!-- Botón grande -->
                      <div class="w-full flex justify-center mt-6">
-                      <a href="https://wa.me/54604168308" target="_blank" 
+                      <a href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información." target="_blank" 
                         class="mt-4 bg-yellow-500 hover:bg-yellow-600 text-white font-bold text-2xl px-20 py-4 rounded-lg shadow-lg transition transform hover:scale-105">
                         ¡Cotiza Ahora!
                       </a>
@@ -96,7 +96,7 @@
                         <div class="mb-2">
                         <a href="/servicios/mudanza-local" class="text-blue-600 hover:underline text-sm font-medium">Ver más →</a>
                         </div>
-                        <a href="https://wa.me/54604168308" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm px-3 py-2 rounded transition">Cotiza aquí</a>
+                        <a href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información." target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm px-3 py-2 rounded transition">Cotiza aquí</a>
                     </div>
                     </div>
 
@@ -109,7 +109,7 @@
                         <div class="mb-2">
                         <a href="/servicios/mudanza-nacional" class="text-blue-600 hover:underline text-sm font-medium">Ver más →</a>
                         </div>
-                        <a href="https://wa.me/54604168308" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm px-3 py-2 rounded transition">Cotiza aquí</a>
+                        <a href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información." target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm px-3 py-2 rounded transition">Cotiza aquí</a>
                     </div>
                     </div>
 
@@ -122,7 +122,7 @@
                         <div class="mb-2">
                         <a href="/servicios/empaque-profesional" class="text-blue-600 hover:underline text-sm font-medium">Ver más →</a>
                         </div>
-                        <a href="https://wa.me/54604168308" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm px-3 py-2 rounded transition">Cotiza aquí</a>
+                        <a href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información." target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm px-3 py-2 rounded transition">Cotiza aquí</a>
                     </div>
                     </div>
 
@@ -135,7 +135,7 @@
                         <div class="mb-2">
                         <a href="/servicios/guardamuebles" class="text-blue-600 hover:underline text-sm font-medium">Ver más →</a>
                         </div>
-                        <a href="https://wa.me/54604168308" target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm px-3 py-2 rounded transition">Cotiza aquí</a>
+                        <a href="https://wa.me/573207797441?text=Hola,%20quiero%20más%20información." target="_blank" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm px-3 py-2 rounded transition">Cotiza aquí</a>
                     </div>
                     </div>
 
