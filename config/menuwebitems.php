@@ -9,9 +9,10 @@ return [
     [
         'name' => 'Servicios',
         'submenu' => [
-            ['name' => 'Ejemplo 1', 'url' => '/servicios/ejemplo-1'],
-            ['name' => 'Ejemplo 2', 'url' => '/servicios/ejemplo-2'],
-            ['name' => 'Ejemplo 3', 'url' => '/servicios/ejemplo-3'],
+            ['name' => 'Mudanzas', 'url' => '/servicios/mudanzas'],
+            ['name' => 'Acarreos', 'url' => '/servicios/acarreos'],
+            ['name' => 'Carga Ligera', 'url' => '/servicios/carga-ligera'],
+            ['name' => 'Carga Pesada', 'url' => '/servicios/carga-pesada'],
         ],
         'url' => '/servicios'
     ],
